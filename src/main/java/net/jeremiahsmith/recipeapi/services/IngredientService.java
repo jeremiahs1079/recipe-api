@@ -3,12 +3,13 @@ package net.jeremiahsmith.recipeapi.services;
 import net.jeremiahsmith.recipeapi.models.Ingredient;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IngredientService {
     List<Ingredient> getIngredients();
-    Ingredient getIngredientById(long id);
+    Optional<Ingredient> getIngredientById(long id);
     List<Ingredient> getIngredientsByName(String name);
-    Ingredient addIngredient(Ingredient ingredient);
-    void deleteIngredient(Ingredient ingredient);
-    Ingredient updateIngredient(Ingredient ingredient);
+    boolean addIngredient(Ingredient ingredient);
+    boolean deleteIngredient(Ingredient ingredient);
+    Optional<Ingredient> updateIngredient(Ingredient ingredient);
 }

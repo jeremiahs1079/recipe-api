@@ -4,12 +4,13 @@ import net.jeremiahsmith.recipeapi.models.Ingredient;
 import net.jeremiahsmith.recipeapi.models.Recipe;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RecipeService {
     List<Recipe> getRecipes();
-    Recipe getRecipeById(long id);
+    Optional<Recipe> getRecipeById(Long id);
     List<Recipe> getRecipesByName(String name);
-    void addRecipe(Recipe recipe);
-    void deleteRecipe(Long recipeId);
-    Recipe updateRecipe(Recipe recipe);
+    boolean addRecipe(Recipe recipe);
+    boolean deleteRecipe(Long recipeId);
+    Optional<Recipe> updateRecipe(Recipe recipe);
 }
