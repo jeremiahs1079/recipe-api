@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeServiceArrayList implements RecipeService {
@@ -28,7 +29,7 @@ public class RecipeServiceArrayList implements RecipeService {
 
     @Override
     public List<Recipe> getRecipesByName(String name) {
-        return null;
+        return recipeArrayList.stream().filter(r -> r.getName().contains(name)).collect(Collectors.toList());
     }
 
     @Override

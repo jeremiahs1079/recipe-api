@@ -25,13 +25,14 @@ public class RecipeController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getRecipes() {
+    public ResponseEntity<?> getRecipes(@RequestParam Optional<String> name) {
         log.debug("GET /recipes");
-        return new ResponseEntity<>(recipeService.getRecipes(), HttpStatus.OK);
+        return name.map(s -> new ResponseEntity<>(recipeService.getRecipesByName(s), HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(recipeService.getRecipes(), HttpStatus.OK));
+
     }
 
     @PostMapping
-    public ResponseEntity<?> addRecipe(@RequestBody Recipe recipe){
+    public ResponseEntity<?> addRecipe(@RequestBody Recipe recipe) {
         log.debug("POST /recipes");
 
         if (this.recipeService.addRecipe(recipe)) {

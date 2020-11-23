@@ -2,7 +2,7 @@ package net.jeremiahsmith.recipeapi.models;
 
 import lombok.Data;
 
-import java.util.List;
+import java.util.Map;
 
 @Data
 public class RecipeStep {
@@ -10,6 +10,6 @@ public class RecipeStep {
     private Long id;
     private int stepNumber;
     private String description;
-    private List<Ingredient> neededIngredients;
+    private Map<Ingredient, Measurement> neededIngredients;
 
 }
